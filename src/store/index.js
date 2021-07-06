@@ -28,7 +28,7 @@ export default new Vuex.Store({
     originalMenuData: {}, // 后端返回未处理过的动态路由, `breadcrumb 面包屑中使用`，防止路由缓存时，menuData 变化，originalMenuData也跟着变化。
     primeMenuData: [], // 后端返回最原始动态路由，未处理 `component` 路径、`hidden` 字段，用于菜单管理中显示(页面路径：用户/菜单管理)
     // 路由缓存数据，字符串为组件中的 `name` 值，想要缓存嵌套路由，得先在当前组件中定义 `name` 值
-    keepAliveList: ['home', 'docs', 'menu2', 'menu11', 'menu122', 'basicForm']
+    keepAliveList: [ 'menu2', 'menu11', 'menu122', 'basicForm']
   },
   mutations: {
     // 触发 layoutConfig 配置更新

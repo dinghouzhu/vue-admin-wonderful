@@ -10,7 +10,7 @@ export function signIn(params) {
 }
 
 // 用户退出登录
-export function signOut() {
+export function signOut(params) {
     return request({
         url: '/user/signOut',
         method: 'post',

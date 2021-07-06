@@ -5,9 +5,9 @@
         <div class="login-time">{{ time.txt }}</div>
         <div class="login-left-box">
           <div>
-            <div class="logo">
-              <img :src="logo" />
-            </div>
+            <!--<div class="logo">-->
+              <!--&lt;!&ndash;<img :src="logo" />&ndash;&gt;-->
+            <!--</div>-->
             <h2 class="title">后台管理系统一站式平台模板</h2>
             <div class="msg">
               <div class="msg-author">
@@ -127,8 +127,8 @@ export default {
         loadingTxt: "登录",
       },
       ruleForm: {
-        userName: "",
-        password: "",
+        userName: "admin",
+        password: "123456",
         code: '',
       },
       rules: {
@@ -178,6 +178,7 @@ export default {
     // 初始化 `验证码`
     onLoginCodeClick() {
       this.loginCode = Math.random().toString(36).substr(-4);
+      this.ruleForm.code = this.loginCode
     },
     // 登录按钮点击
     submitForm(formName) {
@@ -258,8 +259,10 @@ export default {
         width: 100%;
         color: #fff;
         opacity: 0.9;
-        font-size: 14px;
+        font-size: 18px;
         overflow: hidden;
+        margin-top: 15px;
+        padding-bottom: 15px;
       }
       .login-left-box {
         flex: 1;
