@@ -288,6 +288,16 @@
               "icon": "el-icon-tickets",
               "title": "表格"
             }
+          },
+          {
+            "path": "/demo/picture",
+            "component": "demo/picture/index",
+            "parentPath": "/demo",
+            "meta": {
+              "parent": "/demo",
+              "icon": "el-icon-s-marketing",
+              "title": "合成图片"
+            }
           }
         ]
       },
