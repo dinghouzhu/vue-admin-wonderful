@@ -12,12 +12,7 @@ export const dropdownList = [
     type: "",
     path: "/home",
   },
-  {
-    label: "文档",
-    link: "",
-    type: "",
-    path: "/docs",
-  },
+
   {
     label: "404",
     link: "",

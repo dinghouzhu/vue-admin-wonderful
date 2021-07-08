@@ -9,6 +9,13 @@ export const staticRoutes = [
     },
   },
   {
+        path: '/bgc',
+        component: () => import('@/views/demo/bgc'),
+        meta: {
+            title: '背景',
+        },
+  },
+  {
     path: '/error',
     component: () => import('@/views/layout/errors'),
     meta: {
