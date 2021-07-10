@@ -3,7 +3,7 @@
     <div class="user-role-warp-box" ref="userRoleWarpBoxRef">
       <el-form :inline="true" :model="ruleForm" ref="ruleForm" size="small" style="height:51px;overflow:hidden;">
         <el-form-item label="菜单名称">
-          <el-input v-model="ruleForm.user" placeholder="请输入菜单名称"></el-input>
+          <el-input v-model="ruleForm.user" placeholder="请输入菜单名称" ></el-input>
         </el-form-item>
         <el-form-item label="菜单状态">
           <el-select v-model="ruleForm.region" placeholder="菜单状态">
@@ -107,10 +107,10 @@ export default {
   },
   methods: {
     getTableData() {
-      this.tableData.loading = true
-      this.tableData.data = this.$store.state.primeMenuData
+      this.tableData.loading = true;
       setTimeout(() => {
         this.tableData.loading = false
+        this.tableData.data = this.$store.state.primeMenuData;
       }, 500)
     },
     // 表格高度
@@ -119,10 +119,59 @@ export default {
         this.tableHeight = `${this.$refs.userRoleWarpBoxRef.clientHeight - 51 - 30}px`
       })
     },
+
+    // 递归查询
+    getName(vals) {
+      let  _this =this;
+      let nameItem = [];
+      let user = this.ruleForm.user;
+      vals.forEach(item => {
+        if (item.children) {
+            _this.getName(item.children)
+        } else {
+            console.log(item.name);
+            nameItem.push(item.name);
+            console.log("这一层没有东西")
+            if (item.meta.title.indexOf(user) != -1) {
+                nameItem.push(item)
+            }
+        }
+       });
+      return nameItem;
+   },
+
     // 查询
-    onSearch() { },
+    onSearch() {
+        let _this =this;
+        let user = this.ruleForm.user
+        if (user){
+           let data  = [];
+            this.tableData.loading = true;
+           this.tableData.data.map( item =>{
+              if (item.children){
+                  item.children.map(index=>{
+                    if (index.meta.title.indexOf(user) != -1){
+                        data.push(index)
+                    }
+                  }
+              )
+            }else {
+                  if (item.meta.title.indexOf(user) != -1) {
+                      data.push(item)
+                  }
+              }
+          }
+          );
+           setTimeout(()=>{
+               _this.tableData.loading = false;
+               _this.tableData.data = data
+           },500)
+        }else {
+            this.$message.error(`请输入菜单名称！`);
+        }
+    },
     // 重置
-    onReset() { },
+    onReset() { this.getTableData()},
     // 新增
     addMenu() {
       this.$refs.addMenuRef.open(this.$store.state.primeMenuData)

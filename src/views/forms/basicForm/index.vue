@@ -73,6 +73,11 @@ export default {
       }
     }
   },
+    mounted(){
+       // console.log(JSON.parse(this.$route.query.ruleForm));
+       // this.ruleForm = JSON.parse(decodeURIComponent(this.$route.query.ruleForm))
+
+    },
   // 组件缓存才在这里初始化事件等
   activated() {
     this.styleHeight()

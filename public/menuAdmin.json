@@ -298,6 +298,16 @@
               "icon": "el-icon-s-marketing",
               "title": "合成图片"
             }
+          },
+          {
+            "path": "/demo/compenments",
+            "component": "demo/compenments/index",
+            "parentPath": "/demo",
+            "meta": {
+              "parent": "/demo",
+              "icon": "el-icon-s-marketing",
+              "title": "组件传值"
+            }
           }
         ]
       },
@@ -312,6 +322,7 @@
         },
         "children": [
           {
+            "name": "basicForm",
             "path": "/forms/basic-form",
             "component": "forms/basicForm/index",
             "parentPath": "/forms",
