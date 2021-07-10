@@ -77,7 +77,8 @@ export default {
       tableData: {
         data: [],
         loading: true
-      }
+      },
+      nameItem:[]
     }
   },
   computed: {
@@ -123,48 +124,31 @@ export default {
     // 递归查询
     getName(vals) {
       let  _this =this;
-      let nameItem = [];
       let user = this.ruleForm.user;
       vals.forEach(item => {
         if (item.children) {
             _this.getName(item.children)
         } else {
-            console.log(item.name);
-            nameItem.push(item.name);
-            console.log("这一层没有东西")
             if (item.meta.title.indexOf(user) != -1) {
-                nameItem.push(item)
+                _this.nameItem.push(item)
             }
         }
        });
-      return nameItem;
+      return _this.nameItem;
    },
 
     // 查询
     onSearch() {
         let _this =this;
-        let user = this.ruleForm.user
+        let user = this.ruleForm.user;
         if (user){
            let data  = [];
-            this.tableData.loading = true;
-           this.tableData.data.map( item =>{
-              if (item.children){
-                  item.children.map(index=>{
-                    if (index.meta.title.indexOf(user) != -1){
-                        data.push(index)
-                    }
-                  }
-              )
-            }else {
-                  if (item.meta.title.indexOf(user) != -1) {
-                      data.push(item)
-                  }
-              }
-          }
-          );
+           this.tableData.loading = true;
+           data = _this.getName(this.tableData.data);
            setTimeout(()=>{
                _this.tableData.loading = false;
-               _this.tableData.data = data
+               _this.tableData.data = data;
+               _this.nameItem = []
            },500)
         }else {
             this.$message.error(`请输入菜单名称！`);
