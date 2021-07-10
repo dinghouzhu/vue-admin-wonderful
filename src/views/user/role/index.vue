@@ -110,7 +110,7 @@ export default {
     getTableData() {
       this.tableData.loading = true;
       setTimeout(() => {
-        this.tableData.loading = false
+        this.tableData.loading = false;
         this.tableData.data = this.$store.state.primeMenuData;
       }, 500)
     },
@@ -120,14 +120,13 @@ export default {
         this.tableHeight = `${this.$refs.userRoleWarpBoxRef.clientHeight - 51 - 30}px`
       })
     },
-
     // 递归查询
-    getName(vals) {
+    getMenuName(arr) {
       let  _this =this;
       let user = this.ruleForm.user;
-      vals.forEach(item => {
+        arr.forEach(item => {
         if (item.children) {
-            _this.getName(item.children)
+            _this.getMenuName(item.children)
         } else {
             if (item.meta.title.indexOf(user) != -1) {
                 _this.nameItem.push(item)
@@ -142,16 +141,14 @@ export default {
         let _this =this;
         let user = this.ruleForm.user;
         if (user){
-           let data  = [];
-           this.tableData.loading = true;
-           data = _this.getName(this.tableData.data);
+            _this.tableData.loading = true;
            setTimeout(()=>{
                _this.tableData.loading = false;
-               _this.tableData.data = data;
+               _this.tableData.data = _this.getMenuName(_this.tableData.data);
                _this.nameItem = []
            },500)
         }else {
-            this.$message.error(`请输入菜单名称！`);
+            _this.$message.error(`请输入菜单名称！`);
         }
     },
     // 重置
