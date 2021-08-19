@@ -2,7 +2,7 @@
     <div>
          <el-button type="primary"  @click="reserve">子变化</el-button>{{demodata}}
         <el-button type="primary"  @click="routeChange">路由传值</el-button>
-          <echartsdemo :list="listData"  v-on:childFn="parentFn"  ></echartsdemo>
+          <echartsdemo :list="listData"  @childFn="parentFn"  ></echartsdemo>
     </div>
 </template>
 

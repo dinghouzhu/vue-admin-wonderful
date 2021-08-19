@@ -240,6 +240,16 @@
             }
           },
           {
+            "path": "/demo/upload",
+            "component": "demo/upload/index",
+            "parentPath": "/demo",
+            "meta": {
+              "parent": "/demo",
+              "icon": "el-icon-edit-outline",
+              "title": "文件上传"
+            }
+          },
+          {
             "path": "/demo/waterfall",
             "component": "demo/waterfall/index",
             "parentPath": "/demo",

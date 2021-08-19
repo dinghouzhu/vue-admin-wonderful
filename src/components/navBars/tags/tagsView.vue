@@ -34,7 +34,6 @@ export default {
     };
   },
   created() {
-      console.log(this.tagsList);
     this.initTagsList();
     // 右键菜单 `tagsContextmenu.vue`, 每项点击监听
     this.bus.$on("closeTagsContextmenu", (res) => {

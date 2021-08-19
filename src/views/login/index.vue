@@ -21,7 +21,8 @@
       </div>
       <div class="login-right">
         <div class="login-main">
-          <h4 class="login-title">vue-admin-wonderful</h4>
+          <h4 class="login-title">Web</h4>
+          <h4 class="login-title">渲染你的世界</h4>
           <el-form class="el-form login-form" :model="ruleForm" :rules="rules" ref="ruleForm">
             <el-form-item style="margin-left: 0px" prop="userName">
               <el-input type="text" placeholder="用户名 admin 或 test" prefix-icon="el-icon-user"
@@ -69,9 +70,9 @@
       </div>
     </div>
     <div class="vue-particles">
-      <vue-particles color="#dedede" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4"
-        linesColor="#dedede" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="150" :moveSpeed="3"
-        :hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" style="height: 100%"></vue-particles>
+      <!--<vue-particles color="#dedede" :particleOpacity="0.7" :particlesNumber="80" shapeType="circle" :particleSize="4"-->
+        <!--linesColor="#dedede" :linesWidth="1" :lineLinked="true" :lineOpacity="0.4" :linesDistance="150" :moveSpeed="3"-->
+        <!--:hoverEffect="true" hoverMode="grab" :clickEffect="true" clickMode="push" style="height: 100%"></vue-particles>-->
     </div>
   </div>
 </template>
@@ -231,11 +232,7 @@ export default {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(
-      ellipse at top left,
-      rgba(105, 155, 200, 1) 0%,
-      rgba(181, 197, 216, 1) 57%
-    );
+    background:url("../../assets/images/login/BC.jpg") 100% 100% ;
   }
   .login-weaper {
     margin: auto;
@@ -315,11 +312,11 @@ export default {
         width: 70%;
         .login-title {
           color: #333;
-          margin-bottom: 40px;
-          font-weight: 500;
+          margin-bottom: 20px;
+          font-weight: 600;
           font-size: 22px;
-          text-align: center;
-          letter-spacing: 4px;
+          text-align: left;
+          letter-spacing: 3px;
         }
         .login-form {
           margin: 10px 0;

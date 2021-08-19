@@ -25,7 +25,7 @@ const router = createRouter()
 
 // 路由加载前
 router.beforeEach((to, from, next) => {
-  document.title = to.meta.title || 'vue-admin-wonderful'
+  document.title = to.meta.title || 'Web,渲染你的世界'
   NProgress.configure({ showSpinner: false })
   NProgress.start()
   keepAliveSplice(to)
