@@ -9,8 +9,12 @@ import request from '@/utils/request';
  */
 // 获取后端动态路由菜单(超级管理)
 export function getMenuAdmin(params) {
+    // return request({
+    //     url: './menuAdmin.json',
+    //     method: 'get'
+    // })
     return request({
-        url: './menuAdmin.json',
+        url: '/user/menuAdmin',
         method: 'get'
     })
     // if (process.env.NODE_ENV !== 'development') {

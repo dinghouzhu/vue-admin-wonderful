@@ -2,8 +2,9 @@
   <div class="steps-one">
     <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm" size="small">
       <el-form-item label="付款账户：" prop="a1">
-        <el-select v-model="ruleForm.a1" placeholder="请选择付款账户" style="width:100%;">
-          <el-option label="1105290566@qq.com" value="1105290566@qq.com"></el-option>
+        <el-select v-model="ruleForm.a1" placeholder="请选择付款账户" style="width:100%;"  multiple clearable @change="change(ruleForm.a1)"  >
+          <el-option v-for="item in options" :key="item.value" :value="item.value" :label="item.label"  :disabled="item.disabled"></el-option>
+
         </el-select>
       </el-form-item>
       <el-form-item label="收款账户：" prop="a3">
@@ -33,6 +34,24 @@ export default {
   name: 'stepsOne',
   data() {
     return {
+      options:[
+          {
+              label:"1349851865@qq.com",
+              value:"1349851865@qq.com",
+              disabled:false
+          },
+          {
+              label:"1349851866@qq.com",
+              value:"1349851866@qq.com",
+              disabled:false
+          },
+          {
+              label:"1349851867@qq.com",
+              value:"1349851867.@qq.com",
+              disabled:false
+          }
+      ]  ,
+
       ruleForm: {
         a1: '',
         a2: '1',
@@ -52,6 +71,11 @@ export default {
     this.initRuleForm()
   },
   methods: {
+     //select change事件
+      change(data){
+          console.log(Array.from(new Set(data)).join(","));
+      } ,
+
     // 初始化表单
     initRuleForm() {
       if (getSession('stepsOne')) {
@@ -69,7 +93,12 @@ export default {
         }
       });
     }
-  }
+  },
+    computed:{
+      query(){
+          return this.options[0].value
+      }
+    }
 }
 </script>
 

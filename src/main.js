@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-
+import axios from "axios";
 import VueParticles from "vue-particles";
 import ElementUI from "element-ui";
 import "@/assets/css/base.scss";
@@ -27,6 +27,7 @@ Vue.component('icon', Icon);
 Vue.config.productionTip = false;
 Vue.prototype.bus = new Vue();
 Vue.prototype.$echarts = Echarts;
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,
