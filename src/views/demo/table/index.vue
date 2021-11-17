@@ -1,6 +1,6 @@
 <template>
     <div class="table-warp" :style="styleHeight">
-        <el-dialog :title="operateType === 'add' ? '新增用户' : '更新用户'" :visible.sync="isShow">
+        <el-dialog :title="operateTitle" :visible.sync="isShow">
             <comform :formLabel="operateFormLabel" :form="operateForm" ref="comform"></comform>
             <div slot="footer" class="dialog-footer">
                 <el-button @click="quietEdit()">取 消</el-button>
@@ -74,7 +74,7 @@
         },
         data() {
             return {
-                operateType: 'add',
+                operateTitle: '查看',
                 isShow: false,
                 exportLoading: false,
                 tableHeight: 0,
